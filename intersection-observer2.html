@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>intersection-observer2</title>
+    <style>
+        .section {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.6s ease, transform 0.9s ease;
+        }
+
+        .section.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .box{
+            width: 500px;
+            height: 600px;
+            background: lemonchiffon;
+            margin-bottom: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box ">  This content will fade in on scroll.</div>
+    <div class="box section">
+        This content will fade in on scroll.
+    </div>
+    <div class="box section">  This content will fade in on scroll.</div>
+    <div class="box section">  This content will fade in on scroll.</div>
+    <div class="box section">  This content will fade in on scroll.</div>
+    <div class="box section">  This content will fade in on scroll.</div>
+    <div class="box section">  This content will fade in on scroll.</div>
+
+</body>
+<script>const observer = new IntersectionObserver((entries) => {
+    debugger
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                debugger
+                entry.target.classList.add('show');
+            }else{
+                debugger
+                entry.target.classList.remove('show');
+            }
+        });
+    });
+
+    document.querySelectorAll('.section').forEach((section) => {
+        observer.observe(section);
+    });
+</script>
+
+</html>

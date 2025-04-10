@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .div1 {
+        width: 500px;
+        height: 1000px;
+        background-color: blue;
+        /* position: relative; */
+    }
+    .div2 {
+        width: 500px;
+        height: 500px;
+        background-color: red;
+    }
+    .btn {
+        width: 100px;
+        height: 25px;
+        padding: 5px;
+        background-color: #be6488;
+        color: #fff;
+        position: fixed;
+        top: 500px;
+    }
+    .edjest {
+        background-color: orange;
+    }
+</style>
+<body>
+    <div class="div1"></div>
+    <div class="btn">Hello</div>
+    <div class="div2"></div>
+</body>
+<script>
+    const btn = document.querySelector('.btn');
+    const div2 = document.querySelector('.div2');
+
+    // Create the Intersection Observer
+    const observer = new IntersectionObserver(entries => {
+            if(entries[0].isIntersecting) {
+                console.log('btn is intersecting div 2');
+                div2.style.backgroundColor = '#6fd09e';
+                btn.classList.add('edjest');
+                // Your code to handle the intersection here
+            } else {
+                console.log('btn is NOT intersecting div 2');
+                div2.style.backgroundColor = 'red'; // Reset background color
+                btn.classList.remove('edjest'); // Remove the 'edjest' class
+                // Your code to handle when they are not intersecting
+            }
+    });
+
+    // Start observing the intersection of .btn with .div2
+    observer.observe(div2);
+</script>
+
+
+</html>
