@@ -38,13 +38,13 @@
 
 </body>
 <script>const observer = new IntersectionObserver((entries) => {
-    debugger
+    
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                debugger
+                
                 entry.target.classList.add('show');
             }else{
-                debugger
+                
                 entry.target.classList.remove('show');
             }
         });
